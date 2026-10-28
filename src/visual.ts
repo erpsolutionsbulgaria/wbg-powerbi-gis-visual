@@ -216,7 +216,7 @@ export class Visual implements IVisual {
   private tooltipPointerInside: boolean;
   private tooltipLocked: boolean;
   private wbLoadVersion = 0;
-  private readonly debugEnabled = false;
+  // private readonly debugEnabled = false;
 
   private createResetViewControl() {
     const container = document.createElement("div");
@@ -1176,7 +1176,7 @@ private async loadWorldBankBasemap(): Promise<void> {
 
         map.setStyle(style);
     } catch (error) {
-        this.debug("WB ERROR", String(error));
+        console.error("Failed to load World Bank basemap:", error);
     }
 }
 
@@ -1512,27 +1512,12 @@ if (document) {
   });
 
 this.map.on("error", (event) => {
-    const error = event.error;
-
-    this.debug("MAPLIBRE ERROR", {
-        message: error?.message ?? String(error),
-        name: error?.name,
-        stack: error?.stack
-    });
+    console.error("MapLibre error:", event.error);
 });
 
 this.map.on("style.load", () => {
     const map = this.map;
     if (!map) return;
-
-    /////
-    this.debug("STYLE LOAD EVENT", {
-        selected: this.formattingSettings.map.baseMap.value.value,
-        currentBaseMap: this.currentBaseMap,
-        sources: Object.keys(this.map?.getStyle()?.sources ?? {}),
-        loadVersion: this.wbLoadVersion
-    });
-    /////
 
     const selected =
         this.formattingSettings.map.baseMap.value.value as string;
@@ -1548,10 +1533,6 @@ this.map.on("style.load", () => {
 
     const style = map.getStyle();
 
-    this.debug("WB STEP 1", {
-        selected
-    });
-
     // Зареждаме само когато стилът е празен.
     // След setStyle(combinedStyle) няма да зареждаме повторно.
     // Check whether an actual World Bank basemap source exists.
@@ -1560,8 +1541,6 @@ this.map.on("style.load", () => {
     ).some(id => id.startsWith("wb-"));
 
     if (hasWorldBankSources && this.map) {
-      this.debug("ADM1", "Calling addAdmin1Layer");
-
         addAdmin1Layer(this.map);
         addProjectSitesLayer(this.map);
         return;
@@ -1767,8 +1746,6 @@ registerProjectSitesPopup(this.map);
           this.getBasemapStyleOptions()
       );
 
-      this.debug("Selected basemap ID", newBaseMap);
-      this.debug("getBasemapStyle result", newStyle);
       /////
   
     if (
@@ -1776,18 +1753,6 @@ registerProjectSitesPopup(this.map);
         isWorldBankChange
     ) {
       this.buildingLayerSignature = null;
-      // this.map?.setStyle?.(
-      //   getBasemapStyle(newBaseMap, this.getBasemapStyleOptions()) as any,
-      // );
-
-      ////
-      this.debug("BASEMAP CHANGE", {
-          from: this.currentBaseMap,
-          to: newBaseMap,
-          oldSignature: this.currentBaseMapStyleSignature,
-          newSignature: newBaseMapStyleSignature
-      });
-      ////
       this.map?.setStyle?.(newStyle as any);
       this.currentBaseMap = newBaseMap;
       this.currentBaseMapStyleSignature = newBaseMapStyleSignature;
@@ -1797,100 +1762,6 @@ registerProjectSitesPopup(this.map);
       this.sync3DBuildingsLayer();
     }
   }
-
-  //////////
-private debug(label: string, value: unknown): void {
-  if (!this.debugEnabled) return;
-
-    let panel = this.rootElement.querySelector<HTMLDivElement>(
-        ".my-debug-panel"
-    );
-
-    if (!panel) {
-        panel = document.createElement("div");
-        panel.className = "my-debug-panel";
-
-        panel.style.cssText = `
-        display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 999999;
-            background: rgba(255, 255, 255, 0.95);
-            color: black;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow: auto;
-            font-family: monospace;
-            font-size: 18px;
-            white-space: pre-wrap;
-            overflow-wrap: anywhere;
-            pointer-events: none;
-        `;
-
-
-const output = document.createElement("textarea");
-
-output.readOnly = true;
-
-output.style.cssText = `
-    width: 100%;
-    height: 250px;
-    box-sizing: border-box;
-    background: #ffffff;
-    color: #000000;
-    font-family: monospace;
-    font-size: 14px;
-    padding: 12px;
-    resize: vertical;
-    pointer-events: auto;
-`;
-
-panel.appendChild(output);
-
-
-        this.rootElement.appendChild(panel);
-    }
-
-    let formatted: string;
-
-    try {
-        formatted =
-            typeof value === "string"
-                ? value
-                : JSON.stringify(value, null, 2) ?? String(value);
-    } catch {
-        formatted = String(value);
-    }
-
-    const output = panel.querySelector<HTMLTextAreaElement>("textarea");
-
-    if (output) {
-        output.value += `\n${label}:\n${formatted}\n`;
-    }
-
-
-
-
-
-
-
-    
-
-    // const entry = document.createElement("pre");
-    // entry.textContent = `${label}:\n${formatted}`;
-
-    // entry.style.cssText = `
-    //     white-space: pre-wrap;
-    //     overflow-wrap: anywhere;
-    // `;
-
-    // panel.appendChild(entry);
-}
-
-//////////
 
   private updateOverlayLayout() {
     const rootRect = this.rootElement.getBoundingClientRect();
