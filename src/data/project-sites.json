@@ -1,0 +1,665 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.3535321,
+            14.2433037
+          ]
+        ]
+      },
+      "id": 1,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": null,
+        "benef_type": "Femmes",
+        "country": "Niger",
+        "date_collect": "2025-01-16",
+        "displaced_community": "No",
+        "displaced_community_desc": null,
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598cb5fffffff",
+        "id": 1,
+        "investment_amount": "25692170.0",
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2433037,
+        "lon": 1.3535321,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923747/attachments/attYFx4xTbxemNqxnZpHDgBu/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923747/attachments/attY9BwYs6pDuakEX9moUArJ/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923747/attachments/attKaenj73Dt43CXyY6hUuDP/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923747/attachments/attuhfLfvAEHLL36zH3NxxyX/']",
+        "photo_person": "Yes",
+        "proj_status": "In progress",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": null,
+        "raw_adm2_name": null,
+        "raw_adm3_name": null,
+        "raw_adm4_name": "Sinder Tchindzdji",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Administration et renforcement des capacités; Agriculture & élevage",
+        "site_desc": "A entre",
+        "site_id": null,
+        "site_name": null,
+        "uuid": "e48c6fd0-3df0-423e-84bc-74f092bc5ecc"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/1",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.2949671,
+            14.2856232
+          ]
+        ]
+      },
+      "id": 2,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": "5429",
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-01-14",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "A travers leur passage à l Maternité pour les soins",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598cb77ffffff",
+        "id": 2,
+        "investment_amount": null,
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2856232,
+        "lon": 1.2949671,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923785/attachments/atts9nYgeb2WGHyZhfk9A2QW/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923785/attachments/attAn9intvurgkTtcBoFgkTG/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923785/attachments/attyfSB7L7Fn2paUPDEZzgsz/']",
+        "photo_person": "No",
+        "proj_status": "In progress",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Soudani",
+        "sec_incident": "Yes",
+        "sec_incident_desc": "Acquisition du sable",
+        "sec_incident_type": "Problème commercial (par exemple: insolvabilité des entrepreneurs, problèmes d'approvisionnement, manque d'assurance, etc.); Autre",
+        "sectors": "Administration et renforcement des capacités; Développement communautaire (CDD); Développement digital et TIC; Secteur financier; Genre; Gestion des risques de catastrophe (GRC); Gouvernance; Santé; Urgence humanitaire; Emploi et croissance économique; Paix, stabilité et développement; Infrastructure rurale; Protection sociale; Eau et assainissement",
+        "site_desc": "La construction et équipements de la Maternité et logement de la Sage Femme plus incinérateur",
+        "site_id": null,
+        "site_name": "CSI Soudani",
+        "uuid": "4071c343-2f32-4f1c-b87b-f3c7607d474c"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/2",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.3749591,
+            14.2423366
+          ]
+        ]
+      },
+      "id": 3,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": null,
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-01-13",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "Vivant",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598cb5fffffff",
+        "id": 3,
+        "investment_amount": "25692170.0",
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2423366,
+        "lon": 1.3749591,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923801/attachments/attEGHVdfecYrNpYrpT3ER3W/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923801/attachments/attUW8kH3aH9Dyjhfkn5ycTe/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923801/attachments/attrHiei3w3y33de9iedqzAV/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923801/attachments/attagoGrkXUxrdte583wyec7/']",
+        "photo_person": "Yes",
+        "proj_status": "In progress",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Niargou kobado",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Administration et renforcement des capacités; Agriculture & élevage; Développement communautaire (CDD)",
+        "site_desc": "La femme bénéficiaires de kits embouche ovine",
+        "site_id": null,
+        "site_name": "Embouche ovine du groupement de l'Union M'Bida",
+        "uuid": "684f6c3c-aadc-4b2b-9870-c1824bfecc53"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/3",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.2016125,
+            14.3848345
+          ]
+        ]
+      },
+      "id": 4,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": "56",
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-01-10",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "Oui profite aux personnes déplacées à travers l'inscription de leurs enfants à l'école",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "8659ab4d7ffffff",
+        "id": 4,
+        "investment_amount": "22638312.0",
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.3848345,
+        "lon": 1.2016125,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923818/attachments/attLR5nxxZyRuUjUJT6wmabA/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923818/attachments/attaNCbv2R2vgGpZXcqqscft/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923818/attachments/attLUUyHbk5f86MpVETn6qhk/']",
+        "photo_person": "Yes",
+        "proj_status": "In progress",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Darôulkarami",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Administration et renforcement des capacités; Changement climatique; Développement communautaire (CDD); Education; Paix, stabilité et développement; Eau et assainissement; Infrastructure rurale",
+        "site_desc": "Construction d'un bloc de trois (03) classes d'un bloc de deux (02) latrine",
+        "site_id": null,
+        "site_name": "Eecole primaire de Darôulkarami",
+        "uuid": "39eecded-e71b-474c-8d3b-072d4c980638"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/4",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.3397419,
+            14.2406071
+          ]
+        ]
+      },
+      "id": 5,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": null,
+        "benef_type": "Enfants en-dessous de 5 ans; Handicapés / Besoins spéciaux; Enfants entre 5 et 18 ans; Déplacés en interne; Minorités; Peuples autochtones; Réfugiés",
+        "country": "Niger",
+        "date_collect": "2025-01-13",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "Les déplacés vivants, résidants dans le milieu avec sa famille peuvent inscrire leurs enfants ",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598cb57ffffff",
+        "id": 5,
+        "investment_amount": null,
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2406071,
+        "lon": 1.3397419,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923833/attachments/att7cmYfa9DfJZiUmAiNLu6a/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923833/attachments/attFThDqLQbTvoZRfC4KkFAH/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923833/attachments/att9YW368Ed3xDZ32SAfx7qf/']",
+        "photo_person": "Yes",
+        "proj_status": "Completed",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Djonte Lassia",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Administration et renforcement des capacités; Développement communautaire (CDD); Education",
+        "site_desc": "Un bloc de trois classes construites et équipées",
+        "site_id": null,
+        "site_name": "Construction d'un bloc de trois classes à l'école primaire Djonte Lassia",
+        "uuid": "3f01a802-3234-4242-8181-7035dfe480ee"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/5",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.3962253,
+            14.2778647
+          ]
+        ]
+      },
+      "id": 6,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": "2373",
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-01-09",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "Qu'il soit de passage où résident comme c'est le village du chef lieu de canton",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598cb4fffffff",
+        "id": 6,
+        "investment_amount": "45663541.0",
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2778647,
+        "lon": 1.3962253,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923844/attachments/attXsyWkzAgjgRcZSusPzmBu/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923844/attachments/attEtHXgiofxqANWiD7CzLqu/']",
+        "photo_person": "Yes",
+        "proj_status": "Completed",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Sawani",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Administration et renforcement des capacités; Agriculture & élevage; Changement climatique; Développement communautaire (CDD); Gestion des risques de catastrophe (GRC); Gouvernance; Paix, stabilité et développement; Protection sociale; Transport",
+        "site_desc": "Au niveau de cette Banque céréalière ils ont reçu trois ravitaillements: _1ere Phase 50 sacs de 100kg ;\n                            -  2eme Phase 20 Sacs de 100 kg; \n                            _ 3 ème phase 20 sacs de 100 kg \n\nAu  total = 90 saks de 100 kg",
+        "site_id": null,
+        "site_name": "Banque céréalière",
+        "uuid": "110c7212-898a-4224-9787-3174d5306483"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/6",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.3950185,
+            14.2662443
+          ]
+        ]
+      },
+      "id": 7,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": "74",
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-01-07",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "Cette activité profite aux population déplacées à travers l'inscription. De leurs enfants ",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598cb4fffffff",
+        "id": 7,
+        "investment_amount": "22638312.0",
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2662443,
+        "lon": 1.3950185,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923860/attachments/attVWyze2gTGJ9XWteYPXvNs/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923860/attachments/attrHxPQNrAvMtqvPft9eLQe/']",
+        "photo_person": "Yes",
+        "proj_status": "In progress",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Noddi",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Développement communautaire (CDD); Education; Environnement & Ressources naturelles; Développement digital et TIC; Gestion des risques de catastrophe (GRC); Gouvernance; Protection sociale; Eau et assainissement",
+        "site_desc": "Construction d'un bloc de trois classes et un bloc de deux Latrines",
+        "site_id": null,
+        "site_name": "Construction de d'un bloc de tois(03) classes un bloc de deux latrines",
+        "uuid": "41246b70-955d-4b44-9260-09fe66ddb8fe"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/7",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.4547971,
+            14.2135787
+          ]
+        ]
+      },
+      "id": 8,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": "387",
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-01-07",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "Pendant.la période sèche",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598ca6fffffff",
+        "id": 8,
+        "investment_amount": null,
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2135787,
+        "lon": 1.4547971,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923877/attachments/attT6y7i5oyr6d7YnG38gi6d/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923877/attachments/att337tgEzMgKiqPrRWfih4R/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/433923877/attachments/attDRFFTnqhE8UtaH8kgYs8J/']",
+        "photo_person": "Yes",
+        "proj_status": "In progress",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Finari Tondey Gouraf",
+        "sec_incident": "Yes",
+        "sec_incident_desc": "Changement ou amélioration dans la réalisation tenant compte des du milieu du forage au lieu de traitement d'eau.",
+        "sec_incident_type": "Problème technique (ex: panne d'infrastructure, erreur humaine, etc.); Autre",
+        "sectors": "Développement communautaire (CDD); Environnement & Ressources naturelles; Gouvernance; Gestion des terres; Infrastructure rurale; Protection sociale; Eau et assainissement",
+        "site_desc": "Poste d'Eau Autonome de Finari Tondey Goura",
+        "site_id": null,
+        "site_name": "Post Autonome de Finari Tondey Goura",
+        "uuid": "c31197bf-6959-4840-8052-7b055b401c0e"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/8",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.2959009,
+            14.2860411
+          ]
+        ]
+      },
+      "id": 9,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": "10500",
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-01-14",
+        "displaced_community": "Yes",
+        "displaced_community_desc": "Dans  s'il se trouve qu'il  y a des déplacés vivants dans la zone ils sont permis et autorisés",
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "86598cb77ffffff",
+        "id": 9,
+        "investment_amount": "3510000.0",
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.2860411,
+        "lon": 1.2959009,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/447172937/attachments/attGfnWJpyLWXHV67ZByprFk/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/447172937/attachments/attaq8Kd8uxe4gPzm7zLRgpS/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/447172937/attachments/attynDb2Rc6rDRDoHv8n2zAB/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/447172937/attachments/attGUb6Bz6NjAFMuEp2Aeshd/']",
+        "photo_person": "Yes",
+        "proj_status": "Completed",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Soudani",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Administration et renforcement des capacités; Agriculture & élevage; Développement communautaire (CDD)",
+        "site_desc": "Dans le cadre la sécurité Alimentaire et nutritionnelle le COGES a été formé  ey la BC a bénéficié d'une dotation en Stock de 50 Sacs de 100 kg",
+        "site_id": null,
+        "site_name": "Banque céréalière",
+        "uuid": "4a834468-0faf-4b4f-84d1-529ad1f1bd15"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/9",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            1.1580404,
+            14.4021528
+          ]
+        ]
+      },
+      "id": 10,
+      "properties": {
+        "adm1cd_c": "NER006",
+        "adm1lb": "Tillabéri",
+        "adm2cd_c": "NER006017",
+        "adm2lb": "Tillabéri",
+        "benef_number": "120",
+        "benef_type": null,
+        "country": "Niger",
+        "date_collect": "2025-02-04",
+        "displaced_community": "No",
+        "displaced_community_desc": null,
+        "donor": null,
+        "etl_batch_id": "a2e6fabd-chunk-0",
+        "h3": "8659ab48fffffff",
+        "id": 10,
+        "investment_amount": "27956656.0",
+        "investment_currency": "FCFA (XOF)",
+        "iso3": "NER",
+        "lat": 14.4021528,
+        "lon": 1.1580404,
+        "pcode": "P130174",
+        "photo_links": "['https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/447172949/attachments/att6GwRJ9spY7gxyHXUPvyGF/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/447172949/attachments/atttg4PA23CMvYLSXrD96ymS/', 'https://kf.kobotoolbox.org/api/v2/assets/aKtZbHXVZYYaJLLQkFTyGJ/data/447172949/attachments/attTYwVsDUCQ6MV2FFZ9s8Wu/']",
+        "photo_person": "Yes",
+        "proj_status": "In progress",
+        "project_name": " P130174 - KANDADJI - Programme Kandadji",
+        "project_name_2": null,
+        "raw_adm1_name": "TILLABERI",
+        "raw_adm2_name": "TILLABERI",
+        "raw_adm3_name": "SINDER",
+        "raw_adm4_name": "Sonsoni bon",
+        "sec_incident": "No",
+        "sec_incident_desc": null,
+        "sec_incident_type": null,
+        "sectors": "Agriculture & élevage; Changement climatique; Développement communautaire (CDD); Administration et renforcement des capacités",
+        "site_desc": "Site Maraicher des groupements féminins de Sonsoni",
+        "site_id": null,
+        "site_name": "Site Maraicher de Sonsoni bon",
+        "uuid": "9c0b24ea-ef14-4358-b33b-27aa2df03104"
+      },
+      "links": [
+        {
+          "title": "Collection",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv",
+          "rel": "collection",
+          "type": "application/json"
+        },
+        {
+          "title": "Item",
+          "href": "https://ddhgeo.worldbank.org/vector/collections/geo_ouo_ddh.t_0067096_dr0096111_5_gems_complete_2026_09_25_csv/items/10",
+          "rel": "item",
+          "type": "application/geo+json"
+        }
+      ]
+    }
+  ]
+}

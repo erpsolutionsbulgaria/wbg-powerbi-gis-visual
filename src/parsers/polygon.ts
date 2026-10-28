@@ -1,0 +1,113 @@
+import { Geometry, MultiPolygon, Polygon } from "geojson";
+import { RowValues, OurData, InputLayerType } from "../dataTypes";
+import { getNumberFromValue, parseColorInput } from "../powerbiUtils";
+
+const getPolygonExtrudeElevation = (
+  value: RowValues["polygonExtrudeElevation"],
+): number | null => {
+  if (value === null || value === undefined || value === "") {
+    return null;
+  }
+
+  const elevation = getNumberFromValue(value);
+  if (typeof elevation !== "number" || !Number.isFinite(elevation)) {
+    return 0;
+  }
+
+  return Math.max(0, elevation);
+};
+
+export const parsePolygon = (
+  wktGeometry: Geometry | null,
+  wkpGeometry: Geometry | null,
+  rowValues: RowValues,
+  errorMessages: string[],
+  data: OurData,
+): boolean => {
+  let geometry: Polygon | MultiPolygon | null = null;
+  const lineColor = parseColorInput(rowValues.polygonLineColor);
+  const fillColor = parseColorInput(rowValues.polygonFillColor);
+  const id = rowValues.geometryId;
+  if (wktGeometry) {
+    if (wktGeometry.type === "Polygon") {
+      if (
+        wktGeometry.coordinates.length === 0 ||
+        !Array.isArray(wktGeometry.coordinates[0]) ||
+        !Array.isArray(wktGeometry.coordinates[0][0])
+      ) {
+        errorMessages.push(`Geometry ${id}: invalid WKT polygon coordinates.`);
+        return false;
+      }
+      geometry = wktGeometry;
+    } else if (wktGeometry.type === "MultiPolygon") {
+      if (
+        wktGeometry.coordinates.length === 0 ||
+        !Array.isArray(wktGeometry.coordinates[0]) ||
+        !Array.isArray(wktGeometry.coordinates[0][0]) ||
+        !Array.isArray(wktGeometry.coordinates[0][0][0])
+      ) {
+        errorMessages.push(
+          `Geometry ${id}: invalid WKT multipolygon coordinates.`,
+        );
+        return false;
+      }
+      geometry = wktGeometry;
+    } else {
+      errorMessages.push(
+        `Geometry ${id}: WKT geometry is not a polygon or multipolygon.`,
+      );
+      return false;
+    }
+  } else if (wkpGeometry) {
+    if (wkpGeometry.type === "Polygon") {
+      if (
+        wkpGeometry.coordinates.length === 0 ||
+        !Array.isArray(wkpGeometry.coordinates[0]) ||
+        !Array.isArray(wkpGeometry.coordinates[0][0])
+      ) {
+        errorMessages.push(
+          `Geometry ${id}: invalid encoded polygon coordinates.`,
+        );
+        return false;
+      }
+      geometry = wkpGeometry;
+    } else if (wkpGeometry.type === "MultiPolygon") {
+      if (
+        wkpGeometry.coordinates.length === 0 ||
+        !Array.isArray(wkpGeometry.coordinates[0]) ||
+        !Array.isArray(wkpGeometry.coordinates[0][0]) ||
+        !Array.isArray(wkpGeometry.coordinates[0][0][0])
+      ) {
+        errorMessages.push(
+          `Geometry ${id}: invalid encoded multipolygon coordinates.`,
+        );
+        return false;
+      }
+      geometry = wkpGeometry;
+    } else {
+      errorMessages.push(
+        `Geometry ${id}: encoded geometry is not a polygon or multipolygon.`,
+      );
+      return false;
+    }
+  }
+  if (!geometry) {
+    errorMessages.push(
+      `Geometry ${id} is a polygon but is missing WKT/WKP. Specify either WKT/WKP.`,
+    );
+    return false;
+  }
+  data.type = InputLayerType.Polygon;
+  data.polygonData = geometry;
+  data.polygonProperties = {
+    lineWidth: getNumberFromValue(rowValues.polygonLineWidth),
+    lineColor: lineColor.rgbaColor,
+    lineColorValue: lineColor.numericValue,
+    lineColorCategory: lineColor.categoricalValue,
+    fillColor: fillColor.rgbaColor,
+    fillColorValue: fillColor.numericValue,
+    fillColorCategory: fillColor.categoricalValue,
+    elevation: getPolygonExtrudeElevation(rowValues.polygonExtrudeElevation),
+  };
+  return true;
+};

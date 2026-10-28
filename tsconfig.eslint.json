@@ -1,0 +1,18 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "module": "es2022",
+        "noEmit": true,
+        "types": [
+            "node"
+        ]
+    },
+    "files": [],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "scripts/**/*.ts",
+        "tests/**/*.ts"
+    ]
+}

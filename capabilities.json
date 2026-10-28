@@ -1,0 +1,1769 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Geometry ID",
+      "name": "geometryId",
+      "kind": "Grouping",
+      "description": "A unique identifier for each geometry"
+    },
+    {
+      "displayName": "Feature label",
+      "name": "featureLabel",
+      "kind": "GroupingOrMeasure",
+      "description": "Optional text label displayed for each feature",
+      "preferredTypes": [
+        {
+          "text": true
+        }
+      ]
+    },
+    {
+      "displayName": "Label priority",
+      "name": "labelPriority",
+      "kind": "Measure",
+      "description": "Optional numeric priority used to resolve overlapping labels",
+      "preferredTypes": [
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Layer Type",
+      "name": "layerType",
+      "kind": "Measure",
+      "description": "The type of geometry - by default, the string 'scatter', 'line' (A->B), 'arc' (A-> B), 'path' (A->B->C ...) or 'polygon'"
+    },
+    {
+      "displayName": "Point1 Latitude",
+      "name": "point1Latitude",
+      "kind": "Measure",
+      "description": "Scatter: this is the latitude of the point. Lines/arcs: this is the latitude of the starting point"
+    },
+    {
+      "displayName": "Point1 Longitude",
+      "name": "point1Longitude",
+      "kind": "Measure",
+      "description": "Scatter: this is the longitude of the point. Lines/arcs: this is the longitude of the starting point"
+    },
+    {
+      "displayName": "Point2 Latitude",
+      "name": "point2Latitude",
+      "kind": "Measure",
+      "description": "Lines/arcs: this is the latitude of the ending point"
+    },
+    {
+      "displayName": "Point2 Longitude",
+      "name": "point2Longitude",
+      "kind": "Measure",
+      "description": "Lines/arcs: this is the longitude of the ending point"
+    },
+    {
+      "displayName": "Well Known Text",
+      "name": "wkt",
+      "kind": "Measure",
+      "description": "Geometry in WKT format. (If using line/arc you must use Point1/Point2.)"
+    },
+    {
+      "displayName": "Well Known Polyline",
+      "name": "wkp",
+      "kind": "Measure",
+      "description": "Geometry in WKP format. (If using line/arc you must use Point1/Point2.)"
+    },
+    {
+      "displayName": "Scatter radius (m)",
+      "name": "scatterRadius",
+      "kind": "Measure",
+      "description": "The radius of scatter in meters"
+    },
+    {
+      "displayName": "Scatter elevation (m)",
+      "name": "scatterElevation",
+      "kind": "Measure",
+      "description": "Optional per-row height for scatter points, in meters",
+      "preferredTypes": [
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Heatmap weight",
+      "name": "heatmapWeight",
+      "kind": "Measure",
+      "description": "Optional numeric weight used when rendering scatter points as a heatmap",
+      "preferredTypes": [
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Scatter line width (m)",
+      "name": "scatterLineWidth",
+      "kind": "Measure",
+      "description": "The width of scatter's lines in meters"
+    },
+    {
+      "displayName": "Scatter line color",
+      "name": "scatterLineColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The color of the scatter's lines. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the scatter line gradient settings, or categorical text values for the scatter line categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Scatter fill",
+      "name": "scatterFillColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The fill color of the scatter. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the scatter fill gradient settings, or categorical text values for the scatter fill categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "(Line) line width (m)",
+      "name": "lineLineWidth",
+      "kind": "Measure",
+      "description": "The width of line's lines in meters."
+    },
+    {
+      "displayName": "(Line) line color",
+      "name": "lineLineColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The color of the line. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the line gradient settings, or categorical text values for the line categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Path width (m)",
+      "name": "pathWidth",
+      "kind": "Measure",
+      "description": "The width of path's lines in meters"
+    },
+    {
+      "displayName": "Path color",
+      "name": "pathColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The color of the path. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the path gradient settings, or categorical text values for the path categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Polygon line width (m)",
+      "name": "polygonLineWidth",
+      "kind": "Measure",
+      "description": "The width of polygon's lines in meters"
+    },
+    {
+      "displayName": "Polygon line color",
+      "name": "polygonLineColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The line color of the polygon. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the polygon line gradient settings, or categorical text values for the polygon line categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Polygon fill",
+      "name": "polygonFillColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The fill color of the polygon. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the polygon fill gradient settings, or categorical text values for the polygon fill categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Polygon extrude elevation (meters)",
+      "name": "polygonExtrudeElevation",
+      "kind": "Measure",
+      "description": "Height to extrude the polygon, in meters",
+      "preferredTypes": [
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Arc line width (m)",
+      "name": "arcLineWidth",
+      "kind": "Measure",
+      "description": "The width of arc's lines in meters"
+    },
+    {
+      "displayName": "Arc Source color",
+      "name": "arcSourceColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The color of the arc's source. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the arc source gradient settings, or categorical text values for the arc source categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Arc Target color",
+      "name": "arcTargetColor",
+      "kind": "GroupingOrMeasure",
+      "description": "The color of the arc's target. Accepts `#RGB`, `#RRGGBB`, `#RRGGBBAA`, `rgb(...)`, or `rgba(...)` direct colors, numeric values for the arc target gradient settings, or categorical text values for the arc target categorical palette",
+      "preferredTypes": [
+        {
+          "text": true
+        },
+        {
+          "numeric": true
+        }
+      ]
+    },
+    {
+      "displayName": "Tooltip HTML",
+      "name": "tooltipHtml",
+      "kind": "Measure",
+      "description": "The HTML to display in the tooltip. You can use CSS = )"
+    },
+    {
+      "displayName": "Timestamp",
+      "name": "timestamp",
+      "kind": "GroupingOrMeasure",
+      "description": "Per-row time used to drive the animation and the time-as-height encoding. Accepts a datetime or a numeric value in seconds. When bound, the Animation card controls the trailing-window playback.",
+      "preferredTypes": [
+        {
+          "numeric": true
+        }
+      ]
+    }
+  ],
+  "supportsHighlight": false,
+  "objects": {
+    "mapProps": {
+      "displayName": "Map properties",
+      "properties": {
+        "baseMap": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "mapboxAccessToken": {
+          "type": {
+            "text": true
+          }
+        },
+        "cartoApiKey": {
+          "type": {
+            "text": true
+          }
+        },
+        "aerialBasemapOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "show3DBuildings": {
+          "type": {
+            "bool": true
+          }
+        },
+        "buildingsMinZoom": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "initialSouth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "initialWest": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "initialNorth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "initialEast": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "flyTo": {
+          "type": {
+            "bool": true
+          }
+        },
+        "flyToDuration": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "flyToPadding": {
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "layerControls": {
+      "displayName": "Layer controls",
+      "properties": {
+        "showLayerOrderControl": {
+          "type": {
+            "bool": true
+          }
+        },
+        "showTimeSlider": {
+          "type": {
+            "bool": true
+          }
+        },
+        "layerDrawOrder": {
+          "type": {
+            "text": true
+          }
+        }
+      }
+    },
+    "legendProps": {
+      "displayName": "Legend",
+      "properties": {
+        "showLegend": {
+          "type": {
+            "bool": true
+          }
+        },
+        "legendOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "showClassificationType": {
+          "type": {
+            "bool": true
+          }
+        },
+        "showScale": {
+          "type": {
+            "bool": true
+          }
+        },
+        "headingFontFamily": {
+          "type": {
+            "formatting": {
+              "fontFamily": true
+            }
+          }
+        },
+        "headingFontSize": {
+          "type": {
+            "formatting": {
+              "fontSize": true
+            }
+          }
+        },
+        "valueFontFamily": {
+          "type": {
+            "formatting": {
+              "fontFamily": true
+            }
+          }
+        },
+        "valueFontSize": {
+          "type": {
+            "formatting": {
+              "fontSize": true
+            }
+          }
+        }
+      }
+    },
+    "highlightingProps": {
+      "displayName": "Highlighting",
+      "properties": {
+        "highlightOnClick": {
+          "type": {
+            "bool": true
+          }
+        },
+        "autoHighlight": {
+          "type": {
+            "bool": true
+          }
+        },
+        "unselectedFadeOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "autoHighlightColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "autoHighlightOpacity": {
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "validationProps": {
+      "displayName": "Validation properties",
+      "properties": {
+        "validateGeometries": {
+          "type": {
+            "bool": true
+          }
+        }
+      }
+    },
+    "animationProps": {
+      "displayName": "Animation properties",
+      "properties": {
+        "play": {
+          "type": {
+            "bool": true
+          }
+        },
+        "loop": {
+          "type": {
+            "bool": true
+          }
+        },
+        "speedMode": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "animationDuration": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "animationSpeed": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "trailLength": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "maxHeight": {
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "labelProps": {
+      "displayName": "Feature labels",
+      "properties": {
+        "showLabels": {
+          "type": {
+            "bool": true
+          }
+        },
+        "minZoom": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "maxZoom": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fontFamily": {
+          "type": {
+            "formatting": {
+              "fontFamily": true
+            }
+          }
+        },
+        "fontSize": {
+          "type": {
+            "formatting": {
+              "fontSize": true
+            }
+          }
+        },
+        "fontBold": {
+          "type": {
+            "bool": true
+          }
+        },
+        "fontItalic": {
+          "type": {
+            "bool": true
+          }
+        },
+        "textColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "textOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "placement": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "offsetX": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "offsetY": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "showBox": {
+          "type": {
+            "bool": true
+          }
+        },
+        "boxFillColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "boxFillOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "boxShape": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "boxPadding": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "borderColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "borderOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "borderWidth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "showShadow": {
+          "type": {
+            "bool": true
+          }
+        },
+        "shadowColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "shadowOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "shadowBlur": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "shadowOffsetX": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "shadowOffsetY": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "showGlow": {
+          "type": {
+            "bool": true
+          }
+        },
+        "glowColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "glowOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "glowWidth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "collisionPadding": {
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "scatterProps": {
+      "displayName": "Scatter properties",
+      "properties": {
+        "layerType": {
+          "type": {
+            "text": true
+          }
+        },
+        "symbolType": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "radiusMinPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "radiusMaxPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultRadius": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "stroked": {
+          "type": {
+            "bool": true
+          }
+        },
+        "filled": {
+          "type": {
+            "bool": true
+          }
+        },
+        "defaultFillColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultFillOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultLineOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMinPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMaxPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineWidth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineGradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "lineGradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "lineGradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineGradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineGradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "lineGradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "lineCategoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fillGradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fillGradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "fillGradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "fillCategoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "billboard": {
+          "type": {
+            "bool": true
+          }
+        }
+      }
+    },
+    "heatmapProps": {
+      "displayName": "Heatmap",
+      "properties": {
+        "showHeatmap": {
+          "type": {
+            "bool": true
+          }
+        },
+        "showScatterPoints": {
+          "type": {
+            "bool": true
+          }
+        },
+        "radiusPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "intensity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "opacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "colorPalette": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "threshold": {
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "h3HexagonProps": {
+      "displayName": "H3 hexagon",
+      "properties": {
+        "showH3Hexagons": {
+          "type": {
+            "bool": true
+          }
+        },
+        "showScatterPoints": {
+          "type": {
+            "bool": true
+          }
+        },
+        "resolution": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fillGradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fillGradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fillGradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "fillGradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "lowFillOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "highFillOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMinPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMaxPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineWidth": {
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    },
+    "lineProps": {
+      "displayName": "Line properties",
+      "properties": {
+        "layerType": {
+          "type": {
+            "text": true
+          }
+        },
+        "lineWidthMinPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMaxPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineWidth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultLineOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "gradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "gradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "gradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "gradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "gradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "gradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "categoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        }
+      }
+    },
+    "pathProps": {
+      "displayName": "Path properties",
+      "properties": {
+        "layerType": {
+          "type": {
+            "text": true
+          }
+        },
+        "lineWidthMinPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMaxPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineWidth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultLineOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "gradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "gradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "gradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "gradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "gradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "gradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "categoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "lineMiterLimit": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineCapRounded": {
+          "type": {
+            "bool": true
+          }
+        },
+        "lineJointRounded": {
+          "type": {
+            "bool": true
+          }
+        },
+        "billboard": {
+          "type": {
+            "bool": true
+          }
+        }
+      }
+    },
+    "arcProps": {
+      "displayName": "Arc properties",
+      "properties": {
+        "layerType": {
+          "type": {
+            "text": true
+          }
+        },
+        "lineWidthMinPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMaxPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineWidth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultSourceColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultSourceOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "sourceGradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "sourceGradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "sourceGradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "sourceGradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "sourceGradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "sourceGradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "sourceCategoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "defaultTargetColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultTargetOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "targetGradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "targetGradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "targetGradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "targetGradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "targetGradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "targetGradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "targetCategoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        }
+      }
+    },
+    "polygonProps": {
+      "displayName": "Polygon properties",
+      "properties": {
+        "layerType": {
+          "type": {
+            "text": true
+          }
+        },
+        "stroked": {
+          "type": {
+            "bool": true
+          }
+        },
+        "filled": {
+          "type": {
+            "bool": true
+          }
+        },
+        "defaultFillColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultFillOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineGradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "lineGradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "lineGradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineGradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineGradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "lineGradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "lineCategoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientPreset": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientBinningMethod": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "fillGradientClassCount": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fillGradientDefinedInterval": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "fillGradientManualBreaks": {
+          "type": {
+            "text": true
+          }
+        },
+        "fillGradientManualColors": {
+          "type": {
+            "text": true
+          }
+        },
+        "fillCategoricalPalette": {
+          "type": {
+            "enumeration": []
+          }
+        },
+        "lineWidthMinPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "lineWidthMaxPixels": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineWidth": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "defaultLineColor": {
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        },
+        "defaultLineOpacity": {
+          "type": {
+            "numeric": true
+          }
+        },
+        "extruded": {
+          "type": {
+            "bool": true
+          }
+        },
+        "wireframe": {
+          "type": {
+            "bool": true
+          }
+        },
+        "lineJointRounded": {
+          "type": {
+            "bool": true
+          }
+        },
+        "lineMiterLimit": {
+          "type": {
+            "numeric": true
+          }
+        }
+      }
+    }
+  },
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "pathColor": {
+            "min": 1
+          }
+        }
+      ],
+      "categorical": {
+        "categories": {
+          "select": [
+            {
+              "for": {
+                "in": "geometryId"
+              }
+            },
+            {
+              "bind": {
+                "to": "featureLabel"
+              }
+            },
+            {
+              "bind": {
+                "to": "pathColor"
+              }
+            }
+          ],
+          "dataReductionAlgorithm": {
+            "window": {
+              "count": 10000
+            }
+          }
+        },
+        "values": {
+          "select": [
+            {
+              "bind": {
+                "to": "layerType"
+              }
+            },
+            {
+              "bind": {
+                "to": "labelPriority"
+              }
+            },
+            {
+              "bind": {
+                "to": "point1Latitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "point1Longitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "point2Latitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "point2Longitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "wkt"
+              }
+            },
+            {
+              "bind": {
+                "to": "wkp"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterRadius"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterElevation"
+              }
+            },
+            {
+              "bind": {
+                "to": "heatmapWeight"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterLineColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterFillColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "lineLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "lineLineColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "pathWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonLineColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonFillColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonExtrudeElevation"
+              }
+            },
+            {
+              "bind": {
+                "to": "arcLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "arcSourceColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "arcTargetColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "tooltipHtml"
+              }
+            },
+            {
+              "bind": {
+                "to": "timestamp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "conditions": [
+        {
+          "pathColor": {
+            "max": 0
+          }
+        }
+      ],
+      "categorical": {
+        "categories": {
+          "select": [
+            {
+              "for": {
+                "in": "geometryId"
+              }
+            },
+            {
+              "bind": {
+                "to": "featureLabel"
+              }
+            }
+          ],
+          "dataReductionAlgorithm": {
+            "window": {
+              "count": 10000
+            }
+          }
+        },
+        "values": {
+          "select": [
+            {
+              "bind": {
+                "to": "layerType"
+              }
+            },
+            {
+              "bind": {
+                "to": "labelPriority"
+              }
+            },
+            {
+              "bind": {
+                "to": "point1Latitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "point1Longitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "point2Latitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "point2Longitude"
+              }
+            },
+            {
+              "bind": {
+                "to": "wkt"
+              }
+            },
+            {
+              "bind": {
+                "to": "wkp"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterRadius"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterElevation"
+              }
+            },
+            {
+              "bind": {
+                "to": "heatmapWeight"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterLineColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "scatterFillColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "lineLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "lineLineColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "pathWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "pathColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonLineColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonFillColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "polygonExtrudeElevation"
+              }
+            },
+            {
+              "bind": {
+                "to": "arcLineWidth"
+              }
+            },
+            {
+              "bind": {
+                "to": "arcSourceColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "arcTargetColor"
+              }
+            },
+            {
+              "bind": {
+                "to": "tooltipHtml"
+              }
+            },
+            {
+              "bind": {
+                "to": "timestamp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "privileges": [
+    {
+      "name": "WebAccess",
+      "essential": true,
+      "parameters": [
+        "https://basemaps.cartocdn.com",
+        "https://a.basemaps.cartocdn.com",
+        "https://b.basemaps.cartocdn.com",
+        "https://c.basemaps.cartocdn.com",
+        "https://d.basemaps.cartocdn.com",
+        "https://tiles.openfreemap.org",
+        "https://server.arcgisonline.com",
+        "https://api.mapbox.com",
+
+        "https://basemaps.cartocdn.com",
+      "https://*.basemaps.cartocdn.com",
+      "https://tiles.openfreemap.org",
+      "https://server.arcgisonline.com",
+      "https://services.arcgisonline.com",
+      "https://*.arcgisonline.com",
+      "https://www.arcgis.com",
+      "https://*.arcgis.com",
+      "https://api.mapbox.com"
+      ]
+    }
+  ]
+}
