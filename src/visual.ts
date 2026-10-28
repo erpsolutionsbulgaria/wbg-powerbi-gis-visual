@@ -2409,6 +2409,8 @@ registerProjectSitesPopup(this.map);
   }
 
   public destroy(): void {
+    ++this.wbLoadVersion;
+
     this.pendingOptions = null;
     this.animationController.stop();
     this.hideStickyTooltip();
