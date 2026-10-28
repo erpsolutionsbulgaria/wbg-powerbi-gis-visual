@@ -75,6 +75,7 @@ import {
   clampAerialBasemapOpacity,
   getBasemapStyle,
   getBasemapStyleSignature,
+  getWorldBankWebMapUrl,
   resolveBasemap,
 } from "./basemaps";
 import {
@@ -96,6 +97,7 @@ import {
   getTooltipPlacementStyle,
   TooltipPlacementBounds,
 } from "./tooltipPlacement";
+import { buildWorldBankStyle } from "./worldBankStyle";
 import { settings } from "cluster";
 import { VectorTileLayer } from "@esri/maplibre-arcgis";
 import {
@@ -1145,6 +1147,7 @@ export class Visual implements IVisual {
 
   
 
+
 private async loadWorldBankBasemap(): Promise<void> {
     const map = this.map;
     if (!map) return;
@@ -1152,14 +1155,7 @@ private async loadWorldBankBasemap(): Promise<void> {
     const basemapId =
         this.formattingSettings.map.baseMap.value.value as string;
 
-    const basemapUrls: Record<string, string> = {
-        world_bank_neutral:
-            "https://www.arcgis.com/sharing/rest/content/items/932029fef9854c71bf4b3fb195793713/data?f=json",
-        world_bank_colored:
-            "https://www.arcgis.com/sharing/rest/content/items/c10ec9e7a88f48969bf1c876423c13d5/data?f=json"
-    };
-
-    const url = basemapUrls[basemapId];
+    const url = getWorldBankWebMapUrl(basemapId);
     if (!url) return;
 
     const version = ++this.wbLoadVersion;
@@ -1170,194 +1166,20 @@ private async loadWorldBankBasemap(): Promise<void> {
         this.formattingSettings.map.baseMap.value.value === basemapId;
 
     try {
-        this.debug("WB START", basemapId);
-
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            throw new Error(`Web Map HTTP ${response.status}`);
-        }
-
-        const webMap = await response.json();
-        if (!isStillActive()) return;
-
-        const configs: any[] = (
-            webMap.baseMap?.baseMapLayers ?? []
-        ).filter((layer: any) => layer.visibility !== false);
-
-        this.debug("WB CONFIG", configs.map((layer: any) => ({
-            title: layer.title,
-            layerType: layer.layerType,
-            itemId: layer.itemId
-        })));
-
-        // Зареждаме Vector Tile слоевете паралелно.
-        const loaded = await Promise.all(
-            configs.map(async (config: any) => {
-                if (config.layerType === "VectorTileLayer") {
-                    if (!config.itemId) {
-                        throw new Error(
-                            `Missing itemId for ${config.title}`
-                        );
-                    }
-
-                    return {
-                        config,
-                        vectorLayer:
-                            await VectorTileLayer.fromPortalItem(
-                                config.itemId
-                            )
-                    };
-                }
-
-                return { config, vectorLayer: null };
-            })
+        const style = await buildWorldBankStyle(
+            basemapId,
+            url,
+            isStillActive
         );
 
-        if (!isStillActive()) return;
+        if (!style || !isStillActive()) return;
 
-        const sources: Record<string, any> = {};
-        const layers: any[] = [];
-        const vectorStyles: any[] = [];
-
-        const addVectorLayer = (
-            vectorLayer: VectorTileLayer,
-            prefix: string
-        ): void => {
-            const sourceIdMap: Record<string, string> = {};
-
-            for (const [oldId, original] of Object.entries(
-                vectorLayer.sources
-            )) {
-                const newId = `${prefix}-${oldId}`;
-                sourceIdMap[oldId] = newId;
-
-                const source: any = JSON.parse(
-                    JSON.stringify(original)
-                );
-
-                if (
-                    source.type === "vector" &&
-                    Array.isArray(source.tiles) &&
-                    source.tiles.length > 0
-                ) {
-                    delete source.url;
-                }
-
-                sources[newId] = source;
-            }
-
-            for (const original of vectorLayer.layers) {
-                const layer: any = JSON.parse(
-                    JSON.stringify(original)
-                );
-
-                layer.id = `${prefix}-${layer.id}`;
-
-                if (layer.source) {
-                    layer.source =
-                        sourceIdMap[layer.source] ?? layer.source;
-                }
-
-                if (layer.ref) {
-                    layer.ref = `${prefix}-${layer.ref}`;
-                }
-
-                layers.push(layer);
-            }
-
-            vectorStyles.push(vectorLayer.style);
-        };
-
-        // Запазваме оригиналния ред от ArcGIS Web Map.
-        loaded.forEach(({ config, vectorLayer }, index) => {
-            const prefix = `wb-${index}`;
-
-            if (
-                config.layerType === "ArcGISTiledMapServiceLayer"
-            ) {
-                const serviceUrl = String(
-                    config.url ?? ""
-                ).replace(/\/$/, "");
-
-                if (!serviceUrl) {
-                    throw new Error(
-                        `Missing raster URL for ${config.title}`
-                    );
-                }
-
-                const sourceId = `${prefix}-raster`;
-
-                sources[sourceId] = {
-                    type: "raster",
-                    tiles: [
-                        `${serviceUrl}/tile/{z}/{y}/{x}`
-                    ],
-                    tileSize: 256
-                };
-
-                layers.push({
-                    id: `${prefix}-layer`,
-                    type: "raster",
-                    source: sourceId,
-                    paint: {
-                        "raster-opacity": config.opacity ?? 1
-                    }
-                });
-
-            } else if (
-                config.layerType === "VectorTileLayer" &&
-                vectorLayer
-            ) {
-                addVectorLayer(vectorLayer, prefix);
-
-            } else {
-                this.debug("WB UNSUPPORTED LAYER", {
-                    title: config.title,
-                    type: config.layerType
-                });
-            }
-        });
-
-        if (layers.length === 0) {
-            throw new Error("No basemap layers were created");
-        }
-
-        const primaryStyle = vectorStyles[0];
-
-        const combinedStyle: any = {
-            version: 8,
-            name: basemapId,
-            sources,
-            layers
-        };
-
-        if (primaryStyle?.glyphs) {
-            combinedStyle.glyphs = primaryStyle.glyphs;
-        }
-
-        if (primaryStyle?.sprite) {
-            combinedStyle.sprite = primaryStyle.sprite;
-        }
-
-        this.debug("WB PREPARED", {
-            basemapId,
-            sources: Object.keys(sources),
-            layersCount: layers.length,
-            glyphs: !!combinedStyle.glyphs,
-            sprite: !!combinedStyle.sprite
-        });
-
-        if (!isStillActive()) return;
-
-        map.setStyle(combinedStyle);
-
-        this.debug("WB STYLE APPLIED", basemapId);
-
+        map.setStyle(style);
     } catch (error) {
         this.debug("WB ERROR", String(error));
     }
 }
+
 
   //////
 
@@ -1685,87 +1507,9 @@ if (document) {
       settings.map.baseMap.value.value,
       this.getBasemapStyleOptions(),
     ) as any,
-    //////
-    transformRequest: (url, resourceType) => {
-    if (resourceType === "Tile") {
-      this.debug("VECTOR TILE REQUEST", url);
-    
-      return { url };
-      }
-    },
-
-    /////
     canvasContextAttributes: { antialias: true },
     maxZoom: 20,
   });
-
-    // DEBUG: изпълнява се при зареждане на нов стил
-
-    const checkButton = document.createElement("button");
-
-checkButton.textContent = "CHECK SOURCE";
-
-checkButton.style.cssText = `
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 9999999;
-    background: yellow;
-    color: black;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-`;
-
-checkButton.onclick = () => {
-    const map = this.map;
-    if (!map) return;
-
-    const style = map.getStyle();
-    const sources = Object.keys(style?.sources ?? {});
-
-    this.debug("CHECK SOURCE", {
-        basemap: this.formattingSettings.map.baseMap.value.value,
-        sources,
-        styleLoaded: map.isStyleLoaded(),
-        tilesLoaded: map.areTilesLoaded(),
-        zoom: map.getZoom()
-    });
-
-    for (const sourceId of sources) {
-        try {
-            this.debug(`Source ${sourceId}`, {
-                loaded: map.isSourceLoaded(sourceId),
-                features:
-                    style?.sources[sourceId]?.type === "vector"
-                        ? map.querySourceFeatures(sourceId).length
-                        : null
-            });
-        } catch (error) {
-            this.debug(`Source ${sourceId} ERROR`, String(error));
-        }
-    }
-
-    ///////
-    const tileUrl =
-  "https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/8/157/252.pbf";
-
-fetch(tileUrl)
-  .then(async (response) => {
-    this.debug("PBF HTTP Response", {
-      status: response.status,
-      ok: response.ok,
-      contentType: response.headers.get("content-type"),
-      size: (await response.arrayBuffer()).byteLength
-    });
-  })
-  .catch((error) => {
-    this.debug("PBF FETCH ERROR", String(error));
-  });
-  ///////
-};
-
-this.rootElement.appendChild(checkButton);
 
 this.map.on("error", (event) => {
     const error = event.error;
@@ -1827,65 +1571,6 @@ this.map.on("style.load", () => {
     void this.loadWorldBankBasemap();
 });
 
-  //////
-
-  
-
-
-this.map.on("sourcedata", (event) => {
-    if (
-        event.sourceId !== "esri" ||
-        event.sourceDataType !== "content"
-    ) {
-        return;
-    }
-
-    const map = this.map;
-    if (!map) return;
-
-    const features = map.querySourceFeatures("esri");
-
-    this.debug("ESRI CONTENT", {
-        featuresCount: features.length,
-        firstFeature: features.length > 0
-            ? {
-                id: features[0].id,
-                properties: features[0].properties,
-                geometryType: features[0].geometry.type
-            }
-            : null
-    });
-});
-
-
-
-
-  /////
-
-  
-this.map.on("idle", () => {
-    const map = this.map;
-    if (!map) return;
-
-    const style = map.getStyle();
-    const sources = Object.keys(style?.sources ?? {});
-
-    const sourceStatus = sources.map((sourceId) => ({
-        id: sourceId,
-        loaded: map.isSourceLoaded(sourceId),
-        features:
-            style?.sources[sourceId]?.type === "vector"
-                ? map.querySourceFeatures(sourceId).length
-                : null,
-    }));
-
-    this.debug("Map source status", {
-        basemap: this.formattingSettings.map.baseMap.value.value,
-        sources: sourceStatus,
-        tilesLoaded: map.areTilesLoaded(),
-        zoom: map.getZoom(),
-    });
-});
 
 registerProjectSitesPopup(this.map);
 

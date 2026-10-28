@@ -39,6 +39,32 @@ export const BASEMAP_RASTER_LAYER_ID = "simple-tiles";
 export const WORLD_BANK_COLORED_BASEMAP_ID = "world_bank_colored";
 export const WORLD_BANK_NEUTRAL_BASEMAP_ID = "world_bank_neutral";
 
+
+export const WORLD_BANK_WEB_MAP_URLS: Record<
+    WorldBankBasemapId,
+    string
+> = {
+    world_bank_neutral:
+        "https://www.arcgis.com/sharing/rest/content/items/932029fef9854c71bf4b3fb195793713/data?f=json",
+
+    world_bank_colored:
+        "https://www.arcgis.com/sharing/rest/content/items/c10ec9e7a88f48969bf1c876423c13d5/data?f=json"
+};
+
+export function getWorldBankWebMapUrl(
+    basemapId: string
+): string | undefined {
+    if (
+        basemapId !== WORLD_BANK_NEUTRAL_BASEMAP_ID &&
+        basemapId !== WORLD_BANK_COLORED_BASEMAP_ID
+    ) {
+        return undefined;
+    }
+
+    return WORLD_BANK_WEB_MAP_URLS[basemapId];
+}
+
+
 export type CartoRasterBasemapId = (typeof CARTO_RASTER_BASEMAP_IDS)[number];
 export type WebAppBasemapId = (typeof WEB_APP_BASEMAP_IDS)[number];
 export type AerialBasemapId = (typeof AERIAL_BASEMAP_IDS)[number];
