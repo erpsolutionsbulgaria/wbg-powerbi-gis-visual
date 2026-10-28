@@ -25,7 +25,6 @@ import {
 import {
     Map as MapLibreMap,
     NavigationControl,
-    Popup
 } from "maplibre-gl";
 import { MapboxOverlay as DeckOverlay } from "@deck.gl/mapbox";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -99,8 +98,11 @@ import {
 } from "./tooltipPlacement";
 import { settings } from "cluster";
 import { VectorTileLayer } from "@esri/maplibre-arcgis";
-import projectSites from "./data/project-sites.json";
-import nigerAdmin1 from "./data/niger-admin1.json";
+import {
+    addProjectSitesLayer,
+    addAdmin1Layer
+} from "./oprationalLayers";
+import { registerProjectSitesPopup } from "./interactions/projectSitesPopup";
 
 const createEmptyDatasetSnapshot = (version = "0"): DatasetSnapshot => ({
   layers: createEmptyLayerDataStore(),
@@ -1813,11 +1815,11 @@ this.map.on("style.load", () => {
         style.sources
     ).some(id => id.startsWith("wb-"));
 
-    if (hasWorldBankSources) {
+    if (hasWorldBankSources && this.map) {
       this.debug("ADM1", "Calling addAdmin1Layer");
 
-        this.addAdmin1Layer();
-        this.addProjectSitesLayer();
+        addAdmin1Layer(this.map);
+        addProjectSitesLayer(this.map);
         return;
     }
 
@@ -1885,7 +1887,7 @@ this.map.on("idle", () => {
     });
 });
 
-this.registerProjectSitesPopup();
+registerProjectSitesPopup(this.map);
 
 
   //////
@@ -2056,165 +2058,7 @@ this.registerProjectSitesPopup();
 
   ////////
   
-private addProjectSitesLayer(): void {
-    const map = this.map;
-    if (!map) return;
 
-    const sourceId = "project-sites";
-    const layerId = "project-sites-points";
-
-    // Не добавяме повторно същия source.
-    if (!map.getSource(sourceId)) {
-        map.addSource(sourceId, {
-            type: "geojson",
-            data: projectSites as any
-        });
-    }
-
-    // Не добавяме повторно същия layer.
-    if (!map.getLayer(layerId)) {
-        map.addLayer({
-            id: layerId,
-            type: "circle",
-            source: sourceId,
-            paint: {
-                "circle-radius": 7,
-                "circle-color": "#e63946",
-                "circle-stroke-width": 2,
-                "circle-stroke-color": "#ffffff"
-            }
-        });
-    }
-
-    this.debug("PROJECT SITES", "GeoJSON layer added");
-}
-
-  ////////
-
-  
-private addAdmin1Layer(): void {
-    const map = this.map;
-    if (!map) return;
-
-    const sourceId = "niger-admin1";
-    const fillLayerId = "niger-admin1-fill";
-    const outlineLayerId = "niger-admin1-outline";
-
-    if (!map.getSource(sourceId)) {
-        map.addSource(sourceId, {
-            type: "geojson",
-            data: nigerAdmin1 as any
-        });
-    }
-
-    if (!map.getLayer(fillLayerId)) {
-        map.addLayer({
-            id: fillLayerId,
-            type: "fill",
-            source: sourceId,
-            paint: {
-                "fill-color": "#3388ff",
-                "fill-opacity": 0.12
-            }
-        });
-    }
-
-    if (!map.getLayer(outlineLayerId)) {
-        map.addLayer({
-            id: outlineLayerId,
-            type: "line",
-            source: sourceId,
-            paint: {
-                "line-color": "#3388ff",
-                "line-width": 2
-            }
-        });
-    }
-
-    // this.debug("ADM1 CHECK", JSON.stringify({
-    //     source: !!map.getSource("niger-admin1"),
-    //     fill: !!map.getLayer("niger-admin1-fill"),
-    //     outline: !!map.getLayer("niger-admin1-outline"),
-    //     geojsonType: nigerAdmin1.type,
-    //     featureCount: nigerAdmin1.features?.length,
-    //     firstGeometry: nigerAdmin1.features?.[0]?.geometry?.type
-    // }));
-}
-
-  ////////
-
-  
-private registerProjectSitesPopup(): void {
-    const map = this.map;
-    if (!map) return;
-
-    map.on("click", "project-sites-points", (event) => {
-        const feature = event.features?.[0];
-        if (!feature) return;
-
-        const properties = feature.properties ?? {};
-        const geometry = feature.geometry;
-
-        if (
-            geometry.type !== "Point" &&
-            geometry.type !== "MultiPoint"
-        ) {
-            return;
-        }
-
-        // Използваме позицията на кликването,
-        // за да работи и с MultiPoint.
-        const coordinates = event.lngLat;
-
-        const projectName =
-            properties.project_name ?? "Unknown project";
-
-        const siteName =
-            properties.site_name ?? "Unknown site";
-
-        const status =
-            properties.proj_status ?? "N/A";
-
-        const beneficiaries =
-            properties.benef_number ?? "N/A";
-
-        // Създаваме DOM елементи вместо HTML string,
-        // за да не вмъкваме непроверен HTML от GeoJSON.
-        const container = document.createElement("div");
-
-        const title = document.createElement("strong");
-        title.textContent = String(projectName);
-        container.appendChild(title);
-
-        const details = [
-            ["Site", siteName],
-            ["Status", status],
-            ["Beneficiaries", beneficiaries]
-        ];
-
-        details.forEach(([label, value]) => {
-            const row = document.createElement("div");
-            row.textContent = `${label}: ${String(value)}`;
-            container.appendChild(row);
-        });
-
-        new Popup({
-            closeButton: true,
-            closeOnClick: true
-        })
-            .setLngLat(coordinates)
-            .setDOMContent(container)
-            .addTo(map);
-    });
-
-    map.on("mouseenter", "project-sites-points", () => {
-        map.getCanvas().style.cursor = "pointer";
-    });
-
-    map.on("mouseleave", "project-sites-points", () => {
-        map.getCanvas().style.cursor = "";
-    });
-}
 
   ////////
 
